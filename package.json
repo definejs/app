@@ -1,0 +1,25 @@
+{
+  "name": "@definejs/app",
+  "version": "0.1.5",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "micty",
+  "email": "mictydeng@qq.com",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/definejs/app.git"
+  },
+  "dependencies": {
+    "@definejs/app-module": "^0.1.2",
+    "@definejs/local-storage": "^0.1.3",
+    "@definejs/navigator": "^0.1.2",
+    "@definejs/object": "^0.1.7",
+    "@definejs/package": "^0.1.6",
+    "@definejs/session-storage": "^0.1.2",
+    "@definejs/tasker": "^0.1.3",
+    "jquery": "^3.5.1"
+  }
+}

@@ -5,9 +5,9 @@ const name$factory = {};
 
 //示例解释：
 /*
-KISP.route('User', function (require, module) {
+definejs.route('User', function (require, module, exports, User) {
     //以下两种写法是等价的。
-    //如果是写法一，则 KISP 内部也会转换成写法二。
+    //如果是写法一，则 definejs 内部也会转换成写法二。
     //写法一简单明了，但写法二功能更自由、丰富。
     //一般情况下用写法一，必要时可用写法二。
 
@@ -18,12 +18,10 @@ KISP.route('User', function (require, module) {
     };
 
     //写法二。
-    return function (User) {
-        User.on({
-            'login': function () { },
-            'logout': function () { },
-        });
-    };
+    User.on({
+        'login': function () { },
+        'logout': function () { },
+    });
 });
 */
 
@@ -53,12 +51,13 @@ module.exports = {
 
         let all = $Object.map(name$factory, function (name, factory) {
 
-            if (typeof factory == 'function') {
-                factory = factory($require, $module, $exports);
-            }
+            return function (M) {
+                let event$fn = factory($require, $module, $exports, M);
 
-            return factory;
-
+                if ($Object.isPlain(event$fn)) {
+                    M.on(event$fn);
+                }
+            };
         });
 
         $module.bind(all);
